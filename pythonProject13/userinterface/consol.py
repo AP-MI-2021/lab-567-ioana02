@@ -1,6 +1,6 @@
 from domain import obiect
 from domain.obiect import get_str, get_id_obiect, get_nume, get_pret, get_descriere
-from logic.crud import read, delete, update
+from logic.crud import read, delete, update, create
 
 
 def show_menu():
@@ -96,5 +96,3 @@ def run_ui(obiecte):
         else:
             print("Dati alta optiune")
      return obiecte
-
-
