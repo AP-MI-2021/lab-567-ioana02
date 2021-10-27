@@ -1,7 +1,7 @@
 from domain.obiect import creeaza_obiect
 
 
-def add(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
+def create(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
     """
      Adauga un obiect
     :param lst_obiecte: lista de obiecte
