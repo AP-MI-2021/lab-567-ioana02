@@ -1,4 +1,4 @@
-from domain.obiect import creeaza_obiect
+from domain.obiect import creeaza_obiect, get_id_obiect
 
 
 def create(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
@@ -40,13 +40,13 @@ def update(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
 def delete(lst_obiecte, id_obiect):
     """
     Sterge un obiect din lista
-    :praram lst_obiecte: lista de obiecte
+    :param lst_obiecte: lista de obiecte
     :param id_obiect: id-ul
     :return: o lista noua fara obiectul cu id-ul id_obiect
     """
     noua_lst = []
     for obiect in lst_obiecte:
-        if get_id_obiect != id_obiect:
+        if get_id_obiect(obiect) != id_obiect:
             noua_lst.append(obiect)
     return noua_lst
 

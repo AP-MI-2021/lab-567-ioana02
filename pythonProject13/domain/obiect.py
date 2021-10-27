@@ -1,6 +1,6 @@
 def creeaza_obiect(id_obiect: int, nume, descriere, pret, locatie: str ):
     """
-         Creeaza un dictionar care reprezinta un obiect
+         Creeaza o lista care reprezinta un obiect
          :param id_obiect: id-ul obiectului, este unic
          :param nume: denumirea obiectului
          :param descriere: descrierea obiectului
@@ -8,14 +8,13 @@ def creeaza_obiect(id_obiect: int, nume, descriere, pret, locatie: str ):
          :param locatie: locul in care este obiectul
          :return: un obiect
     """
-    return [
-        id_obiect,
-        nume,
-        descriere,
-        pret,
-        locatie,
-    ]
-    #return [id_obiect, nume, descriere, pret, locatie]
+    return {
+        "id_obiect": id_obiect,
+        "nume": nume,
+        "descriere": descrierea_obiectului,
+        "pret": pretul,
+        "locatie": locatia,
+    }
 
 
 def get_id_obiect(obiect):
@@ -24,8 +23,8 @@ def get_id_obiect(obiect):
     :param obiect: obiectul
     :return: id-ul
     """
-    return obiect[0]
-#return obiect[0]
+    return obiect["id_obiect"]
+
 
 def get_nume(obiect):
     """
@@ -33,8 +32,8 @@ def get_nume(obiect):
     :param obiect: obiecul
     :return: numele
     """
-    return obiect[1]
-#return obiect[1]
+    return obiect["nume"]
+
 
 def get_descriere(obiect):
     """
@@ -42,8 +41,8 @@ def get_descriere(obiect):
     :param obiect: obiectul
     :return: descrierea
     """
-    return obiect[2]
-#return obiect[2]
+    return obiect["descriere"]
+
 
 def get_pret(obiect):
     """
@@ -51,8 +50,8 @@ def get_pret(obiect):
     :param obiect: obiectul
     :return: pretul
     """
-    return obiect[3]
-#return obiect[3]
+    return obiect["pret"]
+
 
 def get_locatie(obiect):
     """
@@ -60,8 +59,8 @@ def get_locatie(obiect):
       :param obiect: obiectul
       :return: locatia
     """
-    return obiect[4]
-#return obiect[4]
+    return obiect["locatie"]
+
 
 def get_str(obiect):
     return f'Obiectul cu id-ul {get_id_obiect(obiect)}, cu denumirea {get_nume(obiect)}, descrierea {get_descriere(obiect)} si pretul {get_pret(obiect)} se afla in locatia {get_locatie(obiect)}. '
