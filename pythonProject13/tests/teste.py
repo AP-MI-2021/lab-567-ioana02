@@ -25,6 +25,7 @@ def test_create():
     assert get_pret(read(obiecte, 3)) == 23
     assert get_locatie(read(obiecte, 1)) == "sasr"
 
+
 def test_read():
     obiecte = get_date()
     some_o = obiecte[2]
@@ -35,10 +36,11 @@ def test_read():
 def test_update():
     obiecte = get_date()
     o_updated = creeaza_obiect(23512, "minge", "verde", 23, "asga")
-    updated = update(obiecte, 23512, "minge", "verde", 23, "asga" )
+    updated = update(obiecte, 23512, "minge", "verde", 23, "asga")
     assert o_updated in updated
     assert o_updated not in obiecte
     assert len(obiecte) == len(updated)
+
 
 def test_delete():
     obiecte = get_date()
@@ -48,4 +50,3 @@ def test_delete():
     assert o_deleted not in deleted
     assert o_deleted in obiecte
     assert len(deleted) == len(obiecte) - 1
-
