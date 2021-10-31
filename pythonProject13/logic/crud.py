@@ -1,26 +1,27 @@
-from domain.obiect import creeaza_obiect, get_id_obiect
+from domain.obiect import creeaza_obiect, valideaza_obiect, get_id
 
 
-def create(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
+def adauga_obiect(lst_obiecte, id, nume, descriere, pret, locatie):
     """
-     Adauga un obiect
+     Adauga un obiect nou intr-o lista
     :param lst_obiecte: lista de obiecte
-    :param id_obiect: id-ul
+    :param id: id-ul
     :param nume: numele
     :param descriere: descrierea
     :param pret: pretul
     :param locatie: locatia
     :return: o lista noua formata din lst_obiecte si noul obiect
     """
-    obiect = creeaza_obiect(id_obiect, nume, descriere, pret, locatie)
+    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    valideaza_obiect(obiect)
     return lst_obiecte + [obiect]
 
 
-def update(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
+def modificare_obiect(lst_obiecte, id, nume, descriere, pret, locatie):
     """
     Actualizeaza un obiect
     :param lst_obiecte: lista de obiecte
-    :param id_obiect: id-ul
+    :param id: id-ul
     :param nume: numele
     :param descriere: descrierea
     :param pret: pretul
@@ -29,39 +30,36 @@ def update(lst_obiecte, id_obiect, nume, descriere, pret, locatie):
     """
     noua_lst = []
     for obiect in lst_obiecte:
-        if get_id_obiect(obiect) == id_obiect:
-            obiect_nou = creeaza_obiect(id_obiect, nume, descriere, pret, locatie)
+        if get_id(obiect) == id:
+            obiect_nou = creeaza_obiect(id, nume, descriere, pret, locatie)
             noua_lst.append(obiect_nou)
         else:
             noua_lst.append(obiect)
     return noua_lst
 
 
-def delete(lst_obiecte, id_obiect):
+def stergere_obiect(lst_obiecte, id):
     """
     Sterge un obiect din lista
     :param lst_obiecte: lista de obiecte
-    :param id_obiect: id-ul
-    :return: o lista noua fara obiectul cu id-ul id_obiect
+    :param id: id-ul
+    :return: o lista noua fara obiectul cu id-ul id
     """
     noua_lst = []
     for obiect in lst_obiecte:
-        if get_id_obiect(obiect) != id_obiect:
+        if get_id(obiect) != id:
             noua_lst.append(obiect)
     return noua_lst
 
 
-def read(lst_obiecte, id_obiect: int = None):
+def read(lst_obiecte, id: int):
     """
-    Citeste un obiect din lista
+    ia obiectul cu id-ul id dintr-o lista
     :param lst_obiecte: o lista de obiecte
-    :param id_obiect: id-ul
-    :return: obiectul cu id-ul id_obiect sau lista cu toate obiectele, dac id_obiect=None
+    :param id: id-ul
+    :return: obiectul cu id-ul id sau lista cu toate obiectele, daca id=None
     """
-    obiect_id = None
     for obiect in lst_obiecte:
-        if get_id_obiect(obiect) == id_obiect:
-            obiect_id = obiect
-    if obiect_id:
-        return obiect_id
-    return lst_obiecte
+        if get_id(obiect) == id:
+            return obiect
+    return None

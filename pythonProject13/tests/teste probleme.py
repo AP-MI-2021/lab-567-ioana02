@@ -28,7 +28,7 @@ def test_concatenare(lista, pret_citit, string_citit):
     assert get_descriere(read(lista1, 1)) == "rosie mare"
 
 
-def test_lista_locatii_obiecte(lista):
+def test_lista_locatii_obiecte():
     lista1 =[]
     lista = []
     id = 1
@@ -45,14 +45,13 @@ def test_lista_locatii_obiecte(lista):
     locatie = "absm"
     obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
-    lista1 = concatenare(lista, pret_citit, string_citit)
     lista1 = lista_locatii_obiecte(lista)
     assert len(lista1) == 2
     assert lista1[0] == "asbn"
     assert lista1[1] == "absm"
 
 
-def test_pret_maxim_locatie(lista):
+def test_pret_maxim_locatie():
     lista1 = []
     lista = []
     id = 1
@@ -69,7 +68,6 @@ def test_pret_maxim_locatie(lista):
     locatie = "absm"
     obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
-    lista1 = concatenare(lista, pret_citit, string_citit)
     lista1 = pret_maxim_locatii(lista)
     assert lista1[0] == 2434
     assert lista1[1] == 23

@@ -1,15 +1,15 @@
-def creeaza_obiect(id_obiect: int, nume, descriere, pret, locatie: str):
+def creeaza_obiect(id: int, nume, descriere, pret, locatie: str):
     """
          Creeaza o lista care reprezinta un obiect
-         :param id_obiect: id-ul obiectului, este unic
+         :param id: id-ul obiectului, este unic
          :param nume: denumirea obiectului
          :param descriere: descrierea obiectului
          :param pret: pretul obiectului
          :param locatie: locul in care este obiectul
-         :return: un obiect
+         :return: un  dictionar ce retine un obiect
     """
     return {
-        "id_obiect": id_obiect,
+        "identi": id,
         "nume": nume,
         "descriere": descriere,
         "pret": pret,
@@ -17,50 +17,57 @@ def creeaza_obiect(id_obiect: int, nume, descriere, pret, locatie: str):
     }
 
 
-def get_id_obiect(obiect):
+def get_id(obiect):
     """
-     ia id-ul obiectului
-    :param obiect: obiectul
-    :return: id-ul
+     returneaza identi-ul obiectului
+    :param obiect:un dictionar de tip obiect
+    :return: identi-ul obiectului
     """
-    return obiect["id_obiect"]
+    return obiect["id"]
 
 
 def get_nume(obiect):
     """
-    ia numele obiectului
-    :param obiect: obiecul
-    :return: numele
+    returneaza numele obiectului
+    :param obiect: un dictionar de tip obiect
+    :return: numele obiectului
     """
     return obiect["nume"]
 
 
 def get_descriere(obiect):
     """
-    ia descrierea obiectului
-    :param obiect: obiectul
-    :return: descrierea
+    returneaza descrierea obiectului
+    :param obiect: un dictionar de tip obiect
+    :return: descrierea obiectului
     """
     return obiect["descriere"]
 
 
 def get_pret(obiect):
     """
-    ia pretul obiectului
-    :param obiect: obiectul
-    :return: pretul
+    returneaza pretul obiectului
+    :param obiect:  dictionar de tip obiect
+    :return: pretul obiectului
     """
     return obiect["pret"]
 
 
 def get_locatie(obiect):
     """
-      ia locul in care este obiectul
-      :param obiect: obiectul
-      :return: locatia
+      returneaza locul in care este obiectul
+      :param obiect:  dictionar de tip obiect
+      :return: locatia obiectului
     """
     return obiect["locatie"]
 
 
 def get_str(obiect):
-    return f'Obiectul cu id-ul {get_id_obiect(obiect)}, cu denumirea {get_nume(obiect)}, descrierea {get_descriere(obiect)} si pretul {get_pret(obiect)} se afla in locatia {get_locatie(obiect)}. '
+    ob = {"id": get_id(obiect), "nume": get_nume(obiect), "descriere": get_descriere(obiect), "pret": get_pret(obiect), "locatie": get_locatie(obiect)}
+    lista = list(ob.items())
+    return lista
+
+
+def valideaza_obiect(obiect):
+    if len(get_locatie(obiect)) > 4:
+        raise ValueError("Locatia are maxim 4 caractere")

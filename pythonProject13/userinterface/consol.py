@@ -1,98 +1,92 @@
-from domain import obiect
-from domain.obiect import get_str, get_id_obiect, get_nume, get_pret, get_descriere
-from logic.crud import read, delete, update, create
+from domain.obiect import get_str
+from logic.crud import adauga_obiect, stergere_obiect, modificare_obiect
+from logic.probleme import concatenare, lista_locatii_obiecte, pret_maxim_locatii, ordonare_obiecte
 
 
-def show_menu():
-    print("1. CRUD ")
-    print("x. Exit ")
+def print_menu():
+    print("1. Adaugarea unui obiect")
+    print("2. Stergerea unui obiect")
+    print("3. Modificarea unui obiect")
+    print("4. Mutarea tuturor obiectelor dintr-o locație în alta.")
+    print("5. Concatenarea unui string citit la toate descrierile cu proprietatea ceruta")
+    print("6. Determinarea pretului maxim pentru fiecare locație.")
+    print("7. Ordonarea obiectelor crescător după preț.")
+    print("8. Afișarea sumelor prețurilor pentru fiecare locație.")
+    print("9. Undo")
+    print("a. Afisare toate obiectele")
+    print("x. Iesire")
 
 
-def handle_add(obiecte):
-    id_obiect = int(input("Dati id-ul obiectului: "))
-    nume = str(input("Dati numele obiectului: "))
-    descriere = str(input("Dati descrierea obiectului: "))
+def ui_adaugare_obiect(lista):
+    id = input("Dati id-ul: ")
+    nume = input("Dati numele: ")
+    descriere = input("Dati descrierea: ")
     pret = float(input("Dati pretul: "))
-    locatie = str(input("Dati locatia: "))
-    return create(obiecte, id_obiect, nume, descriere, pret, locatie)
+    locatie = input("Dati locatia: ")
+    return adauga_obiect(lista, id, nume, descriere, pret, locatie)
 
 
-def handle_modify(obiecte):
-    id_obiect = int(input("Dati id-ul obiectului care se modifica: "))
-    nume = str(input("Dati numele obiectului: "))
-    descriere = str(input("Dati descrierea obiectului: "))
-    pret = float(input("Dati pretul: "))
-    locatie = str(input("Dati locatia: "))
-    return update(obiect, id_obiect, nume, descriere, pret, locatie)
+def ui_stergere_obiect(lista):
+    id = input("Dati id-ul obiectului  pe care doriti sa il stergeti: ")
+    return stergere_obiect(id, lista)
 
 
-def handle_delete(obiecte):
-    id_obiect = int(input("Dati id-ul obiectului care se srterge: "))
-    obiecte = delete(obiecte, id_obiect)
-    print("Stergerea a fost efectuata cu succes!")
-    return obiecte
+def ui_modificare_obiect(lista):
+    id = input("Dati id-ul obiectului pe care doriti sa il modificati: ")
+    nume = input("Dati numele: ")
+    descriere = input("Dati descrierea: ")
+    pret = input("Dati pretul: ")
+    locatie = input("Dati locatia: ")
+    return modificare_obiect(lista, id, nume, descriere, pret, locatie)
 
 
-def handle_show_all(obiecte):
-    for ob in obiecte:
-        print(get_str(ob))
+def ui_concatenare(lista):
+    string_citit = input("Dati string-ul: ")
+    pret_citit = float(input("Dati pretul: "))
+    return concatenare(lista, pret_citit, string_citit)
 
 
-def handle_show_details(obiecte):
-    id_obiect = int(input("Dati id-ul obiecului pentru care doriti detalii: "))
-    ob = read(obiecte, id_obiect)
-    print(f'Id-ul obiectului este: {get_id_obiect(ob)}')
-    print(f'Numele obiectului este: {get_nume(ob)}')
-    print(f'Descrierea obiectului este: {get_descriere(ob)}')
-    print(f'Pretul obiectului este: {get_pret(ob)}')
+def ui_pret_maxim_locatii(lista):
+    lista_locatie = lista_locatii_obiecte(lista)
+    lista_pret = pret_maxim_locatii(lista)
+    for x in range(0, len(lista_pret)):
+        print(lista_locatie[x], ": ", lista_pret[x])
 
 
-def handel_crud(obiecte):
+def ui_ordonare_obiecte(lista):
+    afisare(ordonare_obiecte(lista))
+
+
+def afisare(lista):
+    for obiect in lista:
+        print(get_str(obiect))
+
+
+def run_menu(lista):
     while True:
-        print("1. Adaugare obiect")
-        print("2. Modificare obiect")
-        print("3. Stergere obiect")
-        print("a. Afisare")
-        print("d. Detalii obiect")
-        print("r. Revenire")
-
-        optiune = input("Alegeti optiunea: ")
-        if optiune == '1':
-            obiecte = handle_add(obiecte)
-        elif optiune == '2':
-            obiecte = handle_modify(obiecte)
-        elif optiune == '3':
-            obiecte = handle_delete(obiecte)
-        elif optiune == 'a':
-            handle_show_all(obiecte)
-        elif optiune == 'd':
-            handle_show_details(obiecte)
-        elif optiune == 'r':
-            break
+        print_menu()
+        optiune = input("Dati optiunea: ")
+        if optiune == "1":
+            lista = ui_adaugare_obiect(lista)
+        elif optiune == "2":
+            lista = ui_stergere_obiect(lista)
+        elif optiune == "3":
+            lista = ui_modificare_obiect(lista)
+        elif optiune == "4":
+            pass
+        elif optiune == "5":
+            lista = ui_concatenare(lista)
+        elif optiune == "6":
+            ui_pret_maxim_locatii(lista)
+        elif optiune == "7":
+            ui_ordonare_obiecte(lista)
+        elif optiune == "a":
+            afisare(lista)
+        elif optiune == "8":
+            pass
+        elif optiune == "9":
+            pass
+        elif optiune == "x":
+            return 0
         else:
             print("Dati alta optiune")
-    return obiecte
-
-
-def run_ui(obiecte):
-     while True:
-        show_menu()
-        optiune = input("Alegeti o optiune: ")
-        print()
-        if optiune == '1':
-            obiecte = handel_crud(obiecte)
-        elif optiune == '2':
-            pass
-        elif optiune == '3':
-            pass
-        elif optiune == '4':
-            pass
-        elif optiune == '5':
-            pass
-        elif optiune == '6':
-            pass
-        elif optiune == 'x':
-            break
-        else:
-            print("Dati alta optiune")
-     return obiecte
