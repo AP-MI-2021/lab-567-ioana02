@@ -11,6 +11,7 @@ def test_adauga_obiect():
     lista = []
     obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
+    assert lista == [obiect]
     assert len(lista) == 1
     assert get_id(read(lista, 2)) == 2
     assert get_nume(read(lista, 2)) == "masa"

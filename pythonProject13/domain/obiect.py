@@ -8,22 +8,24 @@ def creeaza_obiect(id: int, nume, descriere, pret, locatie: str):
          :param locatie: locul in care este obiectul
          :return: un  dictionar ce retine un obiect
     """
-    return {
-        "identi": id,
-        "nume": nume,
-        "descriere": descriere,
-        "pret": pret,
-        "locatie": locatie,
-    }
+    return [id, nume, descriere, pret, locatie]
+    #return {
+        #"id": id,
+        #"nume": nume,
+        #"descriere": descriere,
+        #"pret": pret,
+        #"locatie": locatie,
+    #}
 
 
 def get_id(obiect):
     """
-     returneaza identi-ul obiectului
+     returneaza id-ul obiectului
     :param obiect:un dictionar de tip obiect
-    :return: identi-ul obiectului
+    :return: id-ul obiectului
     """
-    return obiect["id"]
+    #return obiect["id"]
+    return obiect[0]
 
 
 def get_nume(obiect):
@@ -32,7 +34,8 @@ def get_nume(obiect):
     :param obiect: un dictionar de tip obiect
     :return: numele obiectului
     """
-    return obiect["nume"]
+    #return obiect["nume"]
+    return obiect[1]
 
 
 def get_descriere(obiect):
@@ -41,7 +44,8 @@ def get_descriere(obiect):
     :param obiect: un dictionar de tip obiect
     :return: descrierea obiectului
     """
-    return obiect["descriere"]
+    #return obiect["descriere"]
+    return obiect[2]
 
 
 def get_pret(obiect):
@@ -50,7 +54,8 @@ def get_pret(obiect):
     :param obiect:  dictionar de tip obiect
     :return: pretul obiectului
     """
-    return obiect["pret"]
+   #return obiect["pret"]
+    return obiect[3]
 
 
 def get_locatie(obiect):
@@ -59,11 +64,13 @@ def get_locatie(obiect):
       :param obiect:  dictionar de tip obiect
       :return: locatia obiectului
     """
-    return obiect["locatie"]
+    #return obiect["locatie"]
+    return obiect[4]
 
 
 def get_str(obiect):
-    ob = {"id": get_id(obiect), "nume": get_nume(obiect), "descriere": get_descriere(obiect), "pret": get_pret(obiect), "locatie": get_locatie(obiect)}
+    ob = {"id": get_id(obiect), "nume": get_nume(obiect), "descriere": get_descriere(obiect),
+          "pret": get_pret(obiect), "locatie": get_locatie(obiect)}
     lista = list(ob.items())
     return lista
 

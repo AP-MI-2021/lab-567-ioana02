@@ -7,7 +7,8 @@ def concatenare(lista, pret_citit, string_citit):
          :param lista: lista de obiecte
          :param pret_citit: valoarea citita
          :param string_citit: string citit
-         :return: o lista noua in care descriera obiectelor cu pret mai mare decat o valoare citita este concatenat cu un string citit
+         :return: o lista noua in care descriera obiectelor cu pret mai mare decat o valoare citita
+         este concatenat cu un string citit
 
     """
     lista_noua = []
@@ -16,7 +17,8 @@ def concatenare(lista, pret_citit, string_citit):
             descriere_noua = get_descriere(obiect)
             descriere_noua = descriere_noua + " "
             descriere_noua = descriere_noua + string_citit
-            obiect_nou = creeaza_obiect(get_id(obiect), get_nume(obiect), descriere_noua, get_pret(obiect), get_locatie(obiect))
+            obiect_nou = creeaza_obiect(get_id(obiect), get_nume(obiect), descriere_noua,
+                                        get_pret(obiect), get_locatie(obiect))
             lista_noua.append(obiect_nou)
         else:
             lista_noua.append(obiect)
