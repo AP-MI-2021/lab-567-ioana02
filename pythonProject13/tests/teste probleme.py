@@ -1,6 +1,7 @@
-from domain.obiect import creeaza_obiect, get_nume, get_descriere, get_pret
+from domain.obiect import creeaza_obiect, get_nume, get_descriere, get_pret, get_locatie
 from logic.crud import adauga_obiect, read
-from logic.probleme import concatenare, lista_locatii_obiecte, pret_maxim_locatii, ordonare_obiecte
+from logic.probleme import concatenare, lista_locatii_obiecte, pret_maxim_locatii, ordonare_obiecte, mutare_locatie, \
+    suma_pret_locatie
 
 
 def test_concatenare(lista, pret_citit, string_citit):
@@ -29,7 +30,7 @@ def test_concatenare(lista, pret_citit, string_citit):
 
 
 def test_lista_locatii_obiecte():
-    lista1 =[]
+    lista1 = []
     lista = []
     id = 1
     nume = "minge"
@@ -93,3 +94,48 @@ def test_ordonare_obiecte():
     ordonare_obiecte(lista)
     assert get_pret(lista[0]) == 23
     assert get_pret(lista[1]) == 2434
+
+
+def test_mutare_locatie():
+    lista1 = []
+    lista = []
+    id = 1
+    nume = "minge"
+    descriere = "rosie"
+    pret = 2434
+    locatie = "asbn"
+    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret, locatie)
+    id = 3
+    nume = "minge"
+    descriere = "verde"
+    pret = 23
+    locatie = "absm"
+    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret, locatie)
+    lista = mutare_locatie(lista, "asbn", "asbm")
+    assert len(lista) == 2
+    assert get_locatie(read(lista, 1)) == "asbn"
+    assert get_locatie(read(lista, 3)) == "asbm"
+
+
+def test_suma_pret_locatie():
+    lista1 = []
+    lista = []
+    id = 1
+    nume = "minge"
+    descriere = "rosie"
+    pret = 2434
+    locatie = "asbn"
+    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret, locatie)
+    id = 3
+    nume = "minge"
+    descriere = "verde"
+    pret = 23
+    locatie = "absm"
+    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret, locatie)
+    lista1 = suma_pret_locatie(lista)
+    assert lista1[0] == 2434
+    assert lista1[1] == 23

@@ -1,4 +1,4 @@
-from domain.obiect import get_pret, get_descriere, get_id, get_nume, get_locatie, creeaza_obiect
+from domain.obiect import get_pret, get_descriere, creeaza_obiect, get_id, get_nume, get_locatie
 
 
 def concatenare(lista, pret_citit, string_citit):
@@ -66,3 +66,34 @@ def ordonare_obiecte(lista):
             if float(get_pret(lista[i])) > float(get_pret(lista[j])):
                 lista[i], lista[j] = lista[j], lista[i]
     return lista
+
+
+def mutare_locatie(lista, locatie1=None, locatie2=None):
+    """
+        modifica locatia obiectelor
+        :param lista: lista cu obiectele
+        :param locatie1: prima locatie a obiectelor
+        :param locatie2: a doua locatie a obiectelor
+        :return: o lista noua cu obiectele mutate
+    """
+    lista1 = []
+    for obiect in lista:
+        if get_locatie(obiect) == locatie1:
+            obiect_nou = creeaza_obiect(get_id(obiect), get_nume(obiect), get_descriere(obiect),
+                                        get_pret(obiect), locatie2)
+            lista1.append(obiect_nou)
+        else:
+            lista1.append(obiect)
+    return lista1
+
+
+def suma_pret_locatie(lista):
+    lista1 = lista_locatii_obiecte(lista)
+    lista2 = []
+    for x in lista1:
+        suma = 0
+        for obiect in lista:
+            if get_locatie(obiect) == x:
+                suma = suma + float(get_pret(obiect))
+        lista2.append(suma)
+    return lista2

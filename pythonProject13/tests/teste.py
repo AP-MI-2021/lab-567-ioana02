@@ -5,6 +5,4 @@ def run_all_tests():
     test_modificare_obiect()
     test_read()
     test_concatenare()
-    test_lista_locatii_obiecte()
-    test_pret_maxim_locatie()
-    test_ordonare_obiecte()
+    test_mutare_obiect()

@@ -9,13 +9,13 @@ def creeaza_obiect(id: int, nume, descriere, pret, locatie: str):
          :return: un  dictionar ce retine un obiect
     """
     return [id, nume, descriere, pret, locatie]
-    #return {
-        #"id": id,
-        #"nume": nume,
-        #"descriere": descriere,
-        #"pret": pret,
-        #"locatie": locatie,
-    #}
+    # return {
+    # "id": id,
+    # "nume": nume,
+    # "descriere": descriere,
+    # "pret": pret,
+    # "locatie": locatie,
+    # }
 
 
 def get_id(obiect):
@@ -24,7 +24,7 @@ def get_id(obiect):
     :param obiect:un dictionar de tip obiect
     :return: id-ul obiectului
     """
-    #return obiect["id"]
+    # return obiect["id"]
     return obiect[0]
 
 
@@ -34,7 +34,7 @@ def get_nume(obiect):
     :param obiect: un dictionar de tip obiect
     :return: numele obiectului
     """
-    #return obiect["nume"]
+    # return obiect["nume"]
     return obiect[1]
 
 
@@ -44,7 +44,7 @@ def get_descriere(obiect):
     :param obiect: un dictionar de tip obiect
     :return: descrierea obiectului
     """
-    #return obiect["descriere"]
+    # return obiect["descriere"]
     return obiect[2]
 
 
@@ -54,7 +54,7 @@ def get_pret(obiect):
     :param obiect:  dictionar de tip obiect
     :return: pretul obiectului
     """
-   #return obiect["pret"]
+    # return obiect["pret"]
     return obiect[3]
 
 
@@ -64,7 +64,7 @@ def get_locatie(obiect):
       :param obiect:  dictionar de tip obiect
       :return: locatia obiectului
     """
-    #return obiect["locatie"]
+    # return obiect["locatie"]
     return obiect[4]
 
 

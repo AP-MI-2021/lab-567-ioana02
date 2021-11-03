@@ -27,14 +27,14 @@ def test_read():
     descriere = "rosie"
     pret = 24
     locatie = "asbn"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     id = 3
     nume = "minge"
     descriere = "verde"
     pret = 23
     locatie = "absm"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     assert get_id(read(lista, 1)) == 1
     assert get_id(read(lista, 3)) == 3
@@ -47,14 +47,14 @@ def test_stergere():
     descriere = "rosie"
     pret = 24
     locatie = "asbn"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     id = 3
     nume = "minge"
     descriere = "verde"
     pret = 23
     locatie = "absm"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     lista = stergere_obiect(3, lista)
     assert len(lista) == 1
@@ -69,14 +69,14 @@ def test_modificare_obiect():
     descriere = "rosie"
     pret = 24
     locatie = "asbn"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     id = 3
     nume = "minge"
     descriere = "verde"
     pret = 23
     locatie = "absm"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
+    creeaza_obiect(id, nume, descriere, pret, locatie)
     adauga_obiect(lista, id, nume, descriere, pret, locatie)
     lista = modificare_obiect(lista, 3, "masa", "culoare maro", 234, "asbm")
     assert get_id(read(lista, 3)) == 3
