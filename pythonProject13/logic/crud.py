@@ -1,4 +1,4 @@
-from domain.obiect import creeaza_obiect, valideaza_obiect, get_id
+from domain.obiect import creeaza_obiect, get_id
 
 
 def adauga_obiect(lst_obiecte, id, nume, descriere, pret, locatie):
@@ -12,8 +12,17 @@ def adauga_obiect(lst_obiecte, id, nume, descriere, pret, locatie):
     :param locatie: locatia
     :return: o lista noua formata din lst_obiecte si noul obiect
     """
+    if id < 1:
+        raise ValueError("id-ul nu poate fi nul sau negativ")
+    if len(nume) == 0:
+        raise ValueError("numele nu poate sa fie nul")
+    if len(descriere) == 0:
+        raise ValueError("descrierea nu poate sa fie nula")
+    if pret < 1:
+        raise ValueError("pretul nu poate sa fie negativ sau nul")
+    if len(locatie) != 4:
+        raise ValueError("locatie trebuie sa fie formata din exact 4 caractere")
     obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
-    valideaza_obiect(obiect)
     return lst_obiecte + [obiect]
 
 
@@ -28,6 +37,18 @@ def modificare_obiect(lst_obiecte, id, nume, descriere, pret, locatie):
     :param locatie: locatia
     :return: o lista cu obiectele actualizate
     """
+    if read(lst_obiecte, id) is None:
+        raise ValueError("obiectul cu id-ul introdus nu exista")
+    if id < 1:
+        raise ValueError("id-ul nu poate fi nul sau negativ")
+    if len(nume) == 0:
+        raise ValueError("numele nu poate sa fie nul")
+    if len(descriere) == 0:
+        raise ValueError("descrierea nu poate sa fie nula")
+    if pret < 1:
+        raise ValueError("pretul nu poate sa fie negativ sau nul")
+    if len(locatie) != 4:
+        raise ValueError("locatie trebuie sa fie formata din exact 4 caractere")
     noua_lst = []
     for obiect in lst_obiecte:
         if get_id(obiect) == id:
@@ -45,6 +66,8 @@ def stergere_obiect(lst_obiecte, id):
     :param id: id-ul
     :return: o lista noua fara obiectul cu id-ul id
     """
+    if read(lst_obiecte, id) is None:
+        raise ValueError("obiectul cu id-ul introdus nu exista")
     noua_lst = []
     for obiect in lst_obiecte:
         if get_id(obiect) != id:

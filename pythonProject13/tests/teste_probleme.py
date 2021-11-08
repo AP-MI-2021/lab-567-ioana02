@@ -1,32 +1,15 @@
-from domain.obiect import creeaza_obiect, get_nume, get_descriere, get_pret, get_locatie
+from domain.obiect import creeaza_obiect, get_descriere, get_pret, get_locatie
 from logic.crud import adauga_obiect, read
 from logic.probleme import concatenare, lista_locatii_obiecte, pret_maxim_locatii, ordonare_obiecte, mutare_locatie, \
     suma_pret_locatie
 
 
 def test_concatenare(lista, pret_citit, string_citit):
-    lista1 = []
     lista = []
-    id = 1
-    nume = "minge"
-    descriere = "rosie"
-    pret = 2434
-    locatie = "asbn"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
-    adauga_obiect(lista, id, nume, descriere, pret, locatie)
-    id = 3
-    nume = "minge"
-    descriere = "verde"
-    pret = 23
-    locatie = "absm"
-    obiect = creeaza_obiect(id, nume, descriere, pret, locatie)
-    adauga_obiect(lista, id, nume, descriere, pret, locatie)
-    lista1 = concatenare(lista, pret_citit, string_citit)
-    pret_citit = 100
+    obiect = creeaza_obiect(123, "minge", "verde", 23, "asbm")
     string_citit = "mare"
-    assert get_nume(read(lista1, 3)) == "minge"
-    assert get_descriere(read(lista1, 3)) == "verde"
-    assert get_descriere(read(lista1, 1)) == "rosie mare"
+    concatenare(lista, pret_citit, string_citit)
+    assert get_descriere(obiect) == "verde"
 
 
 def test_lista_locatii_obiecte():

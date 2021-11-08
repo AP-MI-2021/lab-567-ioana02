@@ -73,8 +73,3 @@ def get_str(obiect):
           "pret": get_pret(obiect), "locatie": get_locatie(obiect)}
     lista = list(ob.items())
     return lista
-
-
-def valideaza_obiect(obiect):
-    if len(get_locatie(obiect)) > 4:
-        raise ValueError("Locatia are maxim 4 caractere")
