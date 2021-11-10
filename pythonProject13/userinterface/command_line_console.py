@@ -14,7 +14,7 @@ def command_line_console(lista):
     while True:
         print_menu()
         optiune = []
-        string_citit = input("Dati o optiune: ")
+        string_citit = input("Dati un string: ")
         optiune = string_citit.split(",")
         if optiune[0] == "adaugare":
             id = optiune[1]
